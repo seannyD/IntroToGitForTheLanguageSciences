@@ -8,9 +8,9 @@ Basics of git"
 
 In this tutorial, we'll learn the basics of the program git:
 
--  Initialise a repository, 
+-  Initialise a repository
 -  Adding files to track
--  Making and committing changes.
+-  Making and committing changes
 -  Undoing and redoing (checkout and revert)
 
 

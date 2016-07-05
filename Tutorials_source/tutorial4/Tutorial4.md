@@ -10,7 +10,6 @@ Miscellaneous features of git and GitHub"
 
 # Introduction
 
-
 ## Untracking files
 
 The `reset` command will remove the file from the repository, but it won't delete the file from your system.
@@ -35,6 +34,14 @@ But be careful!  This will only stop files being **added**.  If they are already
 If you've added files to a repository, but you shouldn't have, there are ways of removing them.  But the safest and simplest thing to do is to copy the files to another location, delete the old repository and then make a new repository with a .gitignore file.
 
 
+##  Forking GitHub repositories and pull requests
+
+If you aren't a collaborator on a GitHub project, you can still contribute to it by forking the repository, making changes, then making a pull request.
+
+First you "fork" the existing repository.  This is actually just making a branch of the repository on the GitHub server.  Clone this fork to your local machine with `git clone`.  You can then make changes, make a commit and push the commit to your GitHub fork.  Then you synch your repository, and make a "pull request".  This sends a reqest to the owner of the project for them to merge your fork/branch with the master branch of the project.
+
+There are [more details here](https://help.github.com/articles/fork-a-repo/)
+
 ## Caching github password
 
 You can store your password secuerly on your machine to avoid having to type it in at every puhs.  There are a number of ways of doing this, see [https://help.github.com/articles/caching-your-github-password-in-git/](https://help.github.com/articles/caching-your-github-password-in-git/).
@@ -46,7 +53,15 @@ You can use services like htmlpreview to view html files in a repository. e.g.:
 
 [https://htmlpreview.github.io/?https://github.com/seannyD/SeansGitHubTutorial-Collaboration/blob/master/results/MainResults.html](https://htmlpreview.github.io/?https://github.com/seannyD/SeansGitHubTutorial-Collaboration/blob/master/results/MainResults.html)
 
+## GitHub licences
+
+By default, GitHub projects do not specify a license.  When you create a GitHub repository, there's an option to add a license from a list of candidates.  All that this does is add a file called LICENCE.txt into your project with the legal terms of the licence.  The suggested options limit people's ability to take and modify your work.  A better option for freer distribution which allows people to copy and modify as long as they attribute you is the "GNU AGPLv3" (GNU Affero General Public License v3.0) [see here fore more details](http://choosealicense.com/licenses/agpl-3.0/).  Note that most Creative Commons licences are not suitable for software.  More options can be found on [this site](http://choosealicense.com/).
 
 ## fetch versus pull
 
 The command `git pull` actually does two things: it downloads stuff from GitHub, then performs a `git merge`.  If you just want to download stuff, use `git fetch`.
+
+
+
+
+
