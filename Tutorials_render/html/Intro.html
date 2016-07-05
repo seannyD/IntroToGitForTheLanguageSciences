@@ -1,0 +1,121 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title>Intro to git – Introduction to Git and Github</title>
+  <style type="text/css">code{white-space: pre;}</style>
+  <link rel="stylesheet" href="pandoc.css" type="text/css" />
+</head>
+<body>
+<div id="header">
+<h1 class="title">Introduction to Git and Github</h1>
+</div>
+<div id="TOC">
+<ul>
+<li><a href="#introduction"><span class="toc-section-number">1</span> Introduction</a><ul>
+<li><a href="#what-is-version-control"><span class="toc-section-number">1.1</span> What is version control?</a><ul>
+<li><a href="#basic-concepts-of-version-control"><span class="toc-section-number">1.1.1</span> Basic concepts of version control</a></li>
+<li><a href="#warning"><span class="toc-section-number">1.1.2</span> WARNING</a></li>
+</ul></li>
+<li><a href="#basic-setup-for-this-course"><span class="toc-section-number">1.2</span> Basic setup for this course</a><ul>
+<li><a href="#installing-git"><span class="toc-section-number">1.2.1</span> Installing git</a></li>
+<li><a href="#installing-a-modern-text-editor"><span class="toc-section-number">1.2.2</span> Installing a modern text editor</a></li>
+<li><a href="#getting-a-github-account"><span class="toc-section-number">1.2.3</span> Getting a github account</a></li>
+</ul></li>
+<li><a href="#make-some-folders-and-files"><span class="toc-section-number">1.3</span> Make some folders and files</a></li>
+<li><a href="#navigating-directories-in-the-terminal-cd-pwd-and-ls"><span class="toc-section-number">1.4</span> Navigating directories in the terminal (<em>cd</em>, <em>pwd</em> and <em>ls</em>)</a><ul>
+<li><a href="#go-on-to-the-next-section"><span class="toc-section-number">1.4.1</span> <a href="Tutorial1.html">Go on to the next section</a></a></li>
+</ul></li>
+</ul></li>
+</ul>
+</div>
+<h1 id="introduction"><span class="header-section-number">1</span> Introduction</h1>
+<p>In this short course, we’ll be using the version control program ‘git’. You’ll learn what version control is, how to build and update a repository and how to use GitHub.</p>
+<h2 id="what-is-version-control"><span class="header-section-number">1.1</span> What is version control?</h2>
+<p>If you were to look at some of my old projects on my computer, you’d see a few things:</p>
+<ul>
+<li>Everything is inside a single folder, with little structure</li>
+<li>There are filenames like “ArticleDraft7_B_EDIT_THIS_ONE_(Backup).doc”</li>
+<li>There are filenames like “DataFromBob_fromEmail EDITED.xls” which had been emailed back and forth four times</li>
+<li>The draft with the highest number is not the one that was edited last</li>
+<li>There are R scripts that point to files that no longer exist on my system</li>
+<li>Some of the functionality relies on me remembering not to run particular lines in a script</li>
+</ul>
+<p>In other words, its <em>disorganised</em>. If I or someone else wanted to pick up the project again, it would be very difficult to figure out where to start. It’s also very redundant - I’m storing whole copies of files with just a few differences between them.</p>
+<p>The answer to this mess is version control. The idea is that you store <em>changes</em> to files in a way that you can go back to the way a file was at a preivous time. It also makes it easy for different people to work on different bits of the project at the same time. By comparing the differences between people’s versions, it’s possible to merge changes in an organised way.</p>
+<p>Using version control means that you can have a single file for the most up-to-date version of your article manuscript, but still keep the entire history of edits. It also basically forces you to make sure your project is well organised and documented.</p>
+<p>There are lots of examples of programs that do version control. In this tutorial, we’ll be using the program <strong>git</strong>, but programs like Mac’s Time Machine or Google Docs or WriteLatex/Overleaf also use version control.</p>
+<h3 id="basic-concepts-of-version-control"><span class="header-section-number">1.1.1</span> Basic concepts of version control</h3>
+<p>Git stores a <strong>repository</strong> of information about your project. You select files for the repository to <strong>track</strong>, then edit the file as usual. When you’ve made a significant change, you can <strong>commit</strong> the changes. At this point, all the differences between the last commit and the current file will be stored in the repository. That means you can <strong>checkout</strong> different versions of the file at different points in its history.</p>
+<p>The general cycle of using version control is the following:</p>
+<ul>
+<li>Initialise a repository to track changes</li>
+<li>Add files to track</li>
+<li>Commit changes to the repository</li>
+<li>Make changes</li>
+<li>Commit changes to the repository …</li>
+<li>Make changes …</li>
+<li>Push repository to an external host</li>
+</ul>
+<p>Pretty much all the code you’ll learn in this tutorial is here:</p>
+<pre><code>&gt; git init
+&gt; git add *
+&gt; git commit &quot;first commit&quot;
+&gt; git add *
+&gt; git commit &quot;changed title&quot;
+&gt; git push</code></pre>
+<h3 id="warning"><span class="header-section-number">1.1.2</span> WARNING</h3>
+<p><strong>Version control is not the same as backing up data!</strong> Git will store the history of your project, but if your computer is damaged or lost then you also lose your project. Backing up to another hard drive / cloud storage is also necessary</p>
+<h2 id="basic-setup-for-this-course"><span class="header-section-number">1.2</span> Basic setup for this course</h2>
+<p>Before the course, you need to do 3 things: install git, install a modern text editor and get a free github account. The basic intro in this document will show you how to do this, and also show how to navigate directories at the command line. Finally, we’ll set up some files that we’ll use in the rest of the tutorial.</p>
+<h3 id="installing-git"><span class="header-section-number">1.2.1</span> Installing git</h3>
+<p>You can download git here: <a href="https://git-scm.com/downloads" class="uri">https://git-scm.com/downloads</a></p>
+<p>If you’re on Windows, just run the installation program and select all the default settings in the install wizard. You should end up with a program called GitBash on your machine.</p>
+<p>If you are familiar with the command line or have a mac, the link above will work fine, but there are also some <a href="https://git-scm.com/book/en/v2/Getting-Started-Installing-Git">more details about other ways to install git here</a>). (I use git through the Mac Terminal, and installed it from the command line).</p>
+<p>For the moment, I would recommend avoiding GitHub desktop.</p>
+<h3 id="installing-a-modern-text-editor"><span class="header-section-number">1.2.2</span> Installing a modern text editor</h3>
+<p>You should also install a modern text editor, such as:</p>
+<p>Windows: <a href="https://notepad-plus-plus.org/">Notepad ++</a></p>
+<p>Mac: [Text Wrangler] (http://www.barebones.com/products/textwrangler/download.html) or [Sublime] (https://www.sublimetext.com/)</p>
+<p>Most Linux distributions come with a decent text editor</p>
+<p>Note that Notepad for Windows or TextEdit for Mac can corrupt text files.</p>
+<h3 id="getting-a-github-account"><span class="header-section-number">1.2.3</span> Getting a github account</h3>
+<p>You should sign up for a github account. It’s free. Go to: <a href="https://github.com/" class="uri">https://github.com/</a> and click ‘Sign up’.</p>
+<h2 id="make-some-folders-and-files"><span class="header-section-number">1.3</span> Make some folders and files</h2>
+<p>Make a folder for this Introduction. Inside that folder, make a folder called <code>tutorial1</code>.</p>
+<p>Make a new text file called <code>animals.txt</code> with the following text:</p>
+<pre>
+Donkey
+Dolphin
+Monkey
+Baracuda
+
+</pre>
+<p><em>Note the blank last line</em></p>
+<p>Save <code>animals.txt</code> to the <code>tutorial1</code> folder.</p>
+<h2 id="navigating-directories-in-the-terminal-cd-pwd-and-ls"><span class="header-section-number">1.4</span> Navigating directories in the terminal (<em>cd</em>, <em>pwd</em> and <em>ls</em>)</h2>
+<p><em>This section introduces basic navigation commands such as <code>cd</code>, <code>pwd</code> and <code>ls</code>. If you’re familiar with these, you can skip to the next section.</em></p>
+<p>Start up your terminal (Mac/Linux) or GitBash (Windows). These use standard Linux bash commands.</p>
+<p>This is where you can type commands to run programs like git. Be careful - the terminal is very powerful and some commands can delete files. But if you follow this tutorial, you shouldn’t run into any problems.</p>
+<p>At any point, the commands you type will apply to the <strong>working directory</strong> (“directory” means the same thing as “folder”). To find out what the current directory is, type <code>pwd</code> (print working directory). The box below shows the command you should type. The <code>&gt;</code> symbol represents the command prompt, and you don’t have to type this character. Press enter after each line. Any line that does not have a command prompt in front of it is output - you shouldn’t type this.</p>
+<pre><code>&gt; pwd</code></pre>
+<p>Type this and press enter. For me, the pwd command returns <code>/Users/sgroberts</code>. For you, it will probably be your home directory. We want to set the current directory to the <code>tutorial1</code> folder. You can <strong>change directory</strong> using the <code>cd</code> command, followed by the location of the directory you want to change to. On my computer, the <code>tutorial1</code> folder is here:</p>
+<pre><code>&gt; cd ~/Documents/Teaching/IntroToGitHub/TutorialFolders/tutorial1/</code></pre>
+<p>The <code>~</code> character at the start is a shortcut for “my home directory”.</p>
+<p>Now we can check the working directory again:</p>
+<pre><code>&gt; pwd
+/Users/sgroberts/Documents/Teaching/IntroToGitHub/TutorialFolders/tutorial1</code></pre>
+<p>If we’re navigating just one folder up or down, then there’s no need to type the whole thing. To move one directory up, type:</p>
+<pre><code>&gt; cd ..</code></pre>
+<p>And to move into a sub-directory of the working directory, just use the name of the directory</p>
+<pre><code>&gt; cd tutorial1</code></pre>
+<p>You can get a <strong>list of files and folders</strong> inside a directory by using <code>ls</code>:</p>
+<pre><code>&gt; ls
+animals.txt</code></pre>
+<p>The <code>tutorial1</code> folder has 1 file inside called <code>animals.txt</code>.</p>
+<hr />
+<h3 id="go-on-to-the-next-section"><span class="header-section-number">1.4.1</span> <a href="Tutorial1.html">Go on to the next section</a></h3>
+</body>
+</html>

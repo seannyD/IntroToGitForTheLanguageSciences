@@ -1,0 +1,101 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title>Intro to git – Introduction to Git and Github: Tutorial 2 Pushing a repository to GitHub</title>
+  <style type="text/css">code{white-space: pre;}</style>
+  <link rel="stylesheet" href="pandoc.css" type="text/css" />
+</head>
+<body>
+<div id="header">
+<h1 class="title">Introduction to Git and Github: Tutorial 2 Pushing a repository to GitHub</h1>
+</div>
+<div id="TOC">
+<ul>
+<li><a href="#back-to-tutorial-1"><span class="toc-section-number">1</span> <a href="Tutorial1.html">Back to Tutorial 1</a></a></li>
+<li><a href="#introduction"><span class="toc-section-number">2</span> Introduction</a><ul>
+<li><a href="#warnings"><span class="toc-section-number">2.1</span> WARNINGS</a></li>
+<li><a href="#set-your-git-username"><span class="toc-section-number">2.2</span> Set your git username</a></li>
+<li><a href="#adding-a-remote-repository"><span class="toc-section-number">2.3</span> Adding a remote repository</a></li>
+<li><a href="#review"><span class="toc-section-number">2.4</span> Review</a><ul>
+<li><a href="#go-on-to-the-next-section"><span class="toc-section-number">2.4.1</span> <a href="Tutorial3.html">Go on to the next section</a></a></li>
+</ul></li>
+</ul></li>
+</ul>
+</div>
+<h1 id="back-to-tutorial-1"><span class="header-section-number">1</span> <a href="Tutorial1.html">Back to Tutorial 1</a></h1>
+<h1 id="introduction"><span class="header-section-number">2</span> Introduction</h1>
+<p>In this tutorial, we’ll learn how to link a repository to GitHub.</p>
+<p>To start, open your terminal / GitBash and <strong>navigate to the folder you made in tutorial 1</strong>.</p>
+<h2 id="warnings"><span class="header-section-number">2.1</span> WARNINGS</h2>
+<p>GitHub repositories are <strong>public</strong> by default. That means that anything you upload to GitHub can be seen by others. It also means that other people can see <strong>any data that exists in your commit history</strong>. This can include old drafts of papers or data before it was anonymised.</p>
+<p>If you pay for a github membership, you can create private repositories, or you can use other services. e.g.:</p>
+<ul>
+<li><a href="https://subversion.apache.org/">Apache Subversion (svm)</a>. There’s a local, secure repository available from the Nijmegen MPI TG, <a href="svn.mpi.nl" class="uri">svn.mpi.nl</a>.</li>
+<li><a href="https://gitlab.gwdg.de">Gitlab</a> hosting service, available through MPG (https://gitlab.gwdg.de).</li>
+</ul>
+<p>See the last tutorial for a way of making sure some files are not included in the repository.</p>
+<h2 id="set-your-git-username"><span class="header-section-number">2.2</span> Set your git username</h2>
+<p>When collaborating, it’s good to know who makes what changes. You can tell git what your github username and email address is using <code>git config</code>.</p>
+<p>My github name is seannyD and my email is sean.roberts@hotmail.com, so I would use:</p>
+<pre><code>&gt; git config --global user.name &quot;seannyD&quot;
+&gt; git config --global user.email &quot;sean.roberts@hotmail.com&quot;</code></pre>
+<p>Set your own username and email now.</p>
+<p><em>Note that the “–global” command sets your username for all repositories. You can set the username just for the current repository by navigating to the repository and using e.g. <code>git config user.name &quot;seannyD&quot;</code>.</em></p>
+<h2 id="adding-a-remote-repository"><span class="header-section-number">2.3</span> Adding a remote repository</h2>
+<p>In tutorial 1 we created a git repository. Let’s link that to an online repository on GitHub.com.</p>
+<ul>
+<li>Go to <a href="www.github.com" class="uri">www.github.com</a> and log in.</li>
+<li>Click ‘New repository’</li>
+<li>Choose a name for the repository. This must be unique for all of GitHub, so make it obvious. For this tutorial, make it something like “ListOfThingsBySean”.</li>
+<li>Click ‘Create repository’ (the default options are fine, and you can add a description later)</li>
+</ul>
+<p>You’ll get a page like this:</p>
+<div class="figure">
+<img src="images/GithubAddRepository.png" />
+
+</div>
+<p>Currently, the repository is empty, so it gives you four options:</p>
+<ul>
+<li>quick setup deatils (if you know what you’re doing)</li>
+<li>create a new repository on the command line</li>
+<li>push an existing repository from the command line</li>
+<li>import code from another repository</li>
+</ul>
+<p>It also gives some code. Note that the second option has some familiar commands: git init, git add and git commit.</p>
+<p>But we already have a repository, so we want the third option: “push an existing repository from the command line”. Copy the two lines of code and paste them into your terminal / GitBash. My code looks like this, but you’ll need to <strong>replace the web address</strong> with your own repository address.</p>
+<pre><code>&gt; git remote add origin https://github.com/seannyD/ListOfThingsBySean.git
+&gt; git push -u origin master</code></pre>
+<p>The first command tells git that you’re going to link the repository to the given web address.</p>
+<p>The second command tells git to upload the repository to GitHub. The <code>-u origin master</code> tells git to push the master branch to GitHub, and to remember this option for later. From now on, you can just use <code>git push</code> to send things to GitHub.</p>
+<p>You’ll need to enter your GitHub password. There are a number of ways of avoiding doing this every time, see <a href="https://help.github.com/articles/caching-your-github-password-in-git/">here</a>.</p>
+<p>After the files have uploaded, go back to the GitHub page in your browser and refresh the page. You’ll see something like this:</p>
+<div class="figure">
+<img src="images/GithubAddedRepository.png" />
+
+</div>
+<p>The files in your directory are now copied to the GitHub page, and other people can access it. It will updated every time you make a commmit and push.</p>
+<p>There are lots of options things on this page, but one of the most useful for now is the ability to add collaborators - people who can edit and push to your online GitHub repository. To do this, go to <em>Settings</em> &gt; <em>Collaborators</em> and enter the username/email address of collaborators.</p>
+<h2 id="review"><span class="header-section-number">2.4</span> Review</h2>
+<p>We’ve now learned the basics of git:</p>
+<p>Initialise a repository</p>
+<pre><code>&gt; git init</code></pre>
+<p>Make a GitHub repository on GitHub.com, then link your local repository to it:</p>
+<pre><code>&gt; git remote add origin &lt;repository url&gt;
+&gt; git push -u origin master</code></pre>
+<p>You’ll now be mainly using these three commands every time you make changes:</p>
+<pre><code>&gt; git add *
+&gt; git commit -m &quot;Commit description message&quot;
+&gt; git push</code></pre>
+<p>You can now appreciate this comic:</p>
+<div class="figure">
+<img src="http://imgs.xkcd.com/comics/git.png" alt="From xkcd, https://xkcd.com/1597/" />
+<p class="caption">From xkcd, https://xkcd.com/1597/</p>
+</div>
+<p><em>From xkcd https://xkcd.com/1597/</em></p>
+<hr />
+<h3 id="go-on-to-the-next-section"><span class="header-section-number">2.4.1</span> <a href="Tutorial3.html">Go on to the next section</a></h3>
+</body>
+</html>

@@ -1,0 +1,244 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title>Intro to git – Introduction to Git and Github: Tutorial 1 Basics of git</title>
+  <style type="text/css">code{white-space: pre;}</style>
+  <link rel="stylesheet" href="pandoc.css" type="text/css" />
+</head>
+<body>
+<div id="header">
+<h1 class="title">Introduction to Git and Github: Tutorial 1 Basics of git</h1>
+</div>
+<div id="TOC">
+<ul>
+<li><a href="#introduction"><span class="toc-section-number">1</span> Introduction</a><ul>
+<li><a href="#initialise-a-git-repository"><span class="toc-section-number">1.1</span> Initialise a git repository</a></li>
+<li><a href="#adding-files-to-the-repository"><span class="toc-section-number">1.2</span> Adding files to the repository</a></li>
+<li><a href="#commiting-changes"><span class="toc-section-number">1.3</span> Commiting changes</a><ul>
+<li><a href="#making-changes"><span class="toc-section-number">1.3.1</span> Making changes</a></li>
+<li><a href="#committing-changes-again"><span class="toc-section-number">1.3.2</span> Committing changes again</a></li>
+</ul></li>
+<li><a href="#undo-and-redo"><span class="toc-section-number">1.4</span> Undo and Redo</a><ul>
+<li><a href="#tracking-multiple-files"><span class="toc-section-number">1.4.1</span> Tracking multiple files</a></li>
+<li><a href="#checking-out-all-files"><span class="toc-section-number">1.4.2</span> Checking out all files</a></li>
+<li><a href="#reverting-to-a-previous-state"><span class="toc-section-number">1.4.3</span> Reverting to a previous state</a></li>
+</ul></li>
+<li><a href="#review"><span class="toc-section-number">1.5</span> Review</a><ul>
+<li><a href="#go-on-to-the-next-section"><span class="toc-section-number">1.5.1</span> <a href="Tutorial2.html">Go on to the next section</a></a></li>
+</ul></li>
+</ul></li>
+</ul>
+</div>
+<h1 id="introduction"><span class="header-section-number">1</span> Introduction</h1>
+<p>In this tutorial, we’ll learn the basics of the program git:</p>
+<ul>
+<li>Initialise a repository,</li>
+<li>Adding files to track</li>
+<li>Making and committing changes.</li>
+<li>Undoing and redoing (checkout and revert)</li>
+</ul>
+<h2 id="initialise-a-git-repository"><span class="header-section-number">1.1</span> Initialise a git repository</h2>
+<p>After navigating to the <code>tutorial1</code> folder, let’s initialise a repository, type <code>git init</code> and press enter:</p>
+<pre><code>&gt; git init
+Initialized empty Git repository in /Users/sgroberts/Documents/Teaching
+  /IntroToGitHub/TutorialFolders/tutorial1/.git/</code></pre>
+<p>This created a hidden folder in our directory called <code>.git</code>. You may not be able to see it in your file browser, but that’s ok - we don’t need to look inside for now.</p>
+<p>Let’s check the status of the repository:</p>
+<pre><code>&gt; git status</code></pre>
+<p>You should get something like this:</p>
+<pre><code>On branch master
+
+Initial commit
+
+Untracked files:
+  (use &quot;git add &lt;file&gt;...&quot; to include in what will be committed)
+
+    animals.txt
+
+nothing added to commit but untracked files present (use &quot;git add&quot; to track)</code></pre>
+<p>Git is telling us that we’re on the master branch, labelled ‘Initial commit’. It also says that there are untracked files in our folder. That means that there are files that the repository is not tracking yet.</p>
+<h2 id="adding-files-to-the-repository"><span class="header-section-number">1.2</span> Adding files to the repository</h2>
+<p>Let’s add the file <code>animals.txt</code> to the repository:</p>
+<pre><code>&gt; git add animals.txt</code></pre>
+<p>Now we can look at the status again:</p>
+<pre><code>&gt; git status
+
+On branch master
+
+Initial commit
+
+Changes to be committed:
+  (use &quot;git rm --cached &lt;file&gt;...&quot; to unstage)
+
+    &lt;span style=&quot;color:red&quot;&gt;new file:   animals.txt&lt;/span&gt;</code></pre>
+<p>It says that there’s a new file waiting to be commited.</p>
+<h2 id="commiting-changes"><span class="header-section-number">1.3</span> Commiting changes</h2>
+<p>Let’s commit this file!</p>
+<p>A commit is done with the git <code>commit</code> option. Every time we commit we need to add a <strong>commit message</strong> about the changes we made. This will come in useful later. The message can be anything you like, but should make it clear what the changes you made are.</p>
+<p>To add a commit message, use the <code>-m</code> option, then surround a short message surrounded by double quotes:</p>
+<pre><code>&gt; git commit -m &quot;Added animals.txt&quot;
+
+[master (root-commit) 3a397b1] Added animals.txt
+ 1 file changed, 4 insertions(+)
+ create mode 100644 animals.txt</code></pre>
+<p>The message tells us that the commit contained a change to 1 file with 4 insertions. Git tracks changes to each line of each file. The 4 insertions are the 4 lines of text inside <code>animals.txt</code>.</p>
+<h3 id="making-changes"><span class="header-section-number">1.3.1</span> Making changes</h3>
+<p>Let’s edit the <code>animals.txt</code> file to the following:</p>
+<pre>
+Donkey
+Shark
+Dolphin
+Barracuda
+Jellyfish
+
+</pre>
+<p>Save the text file.</p>
+<p>Note that we fixed the spelling of “Barracuda”, deleted <em>Monkey</em> and added <em>Shark</em> and <em>Jellyfish</em>. If we run <code>git status</code> again, git shows us the files that have changed since the last commit:</p>
+<pre><code>&gt; git status
+
+On branch master
+Changes not staged for commit:
+  (use &quot;git add &lt;file&gt;...&quot; to update what will be committed)
+  (use &quot;git checkout -- &lt;file&gt;...&quot; to discard changes in working directory)
+
+    modified:   animals.txt
+
+no changes added to commit (use &quot;git add&quot; and/or &quot;git commit -a&quot;)</code></pre>
+<p>We can also look at more detailed information on what has changed since the last commit with <code>git diff</code></p>
+<pre>
+> git diff
+    
+diff --git a/animals.txt b/animals.txt
+index c7896ad..b35d465 100644
+--- a/animals.txt
++++ b/animals.txt
+<span style="color:blue">@@ -1,4 +1,5 @@</span>
+ Donkey
+<span style="color:lightgreen">+Shark</span>
+ Dolphin
+<span style="color:red">-Monkey</span>
+<span style="color:red">-Baracuda</span>
+<span style="color:lightgreen">+Barracuda</span>
+<span style="color:lightgreen">+Jellyfish</span>
+</pre>
+<p>This tells us that there have been chagnes to the file <code>animals.txt</code>. Additions are coloured in green and deletions are coloured in red. Note that the editing of “Baracuda” has been counted as a deletion and an addition.</p>
+<h3 id="committing-changes-again"><span class="header-section-number">1.3.2</span> Committing changes again</h3>
+<p>We haven’t added the changes yet, so let’s do that:</p>
+<pre><code>&gt; git add animals.txt</code></pre>
+<p>This command tells git to add all changes in all files inside the working directory (and all files in sub-directories inside the working directory).</p>
+<p>Let’s commit these changes:</p>
+<pre><code>&gt; git commit -m &quot;Fixed Barracuda spelling, added shark and jellyfish, deleted monkey&quot;
+
+[master bc7f5ac] Fixed Barracuda spelling, added shark and jellyfish, deleted monkey
+ 1 file changed, 3 insertions(+), 2 deletions(-)</code></pre>
+<p>Git tells us that 1 file has changed, and we’ve made 3 insertions and 2 deletions.</p>
+<p>The command <code>git log</code> shows us the history of commits, starting with the most recent commit:</p>
+<pre><code>&gt; git log
+
+commit bc7f5ac9be1fe3dc8a4a779d81e17bf5f6bb7962
+Author: seannyD &lt;sean.g.roberts@gmail.com&gt;
+Date:   Sun Jul 3 12:15:42 2016 +0200
+
+    Fixed Barracuda spelling, added shark and jellyfish, deleted monkey
+
+commit 3a397b1bc84f63f149a87f893e5013090f65968b
+Author: seannyD &lt;sean.g.roberts@gmail.com&gt;
+Date:   Sun Jul 3 11:59:25 2016 +0200
+
+    Added animals.txt</code></pre>
+<h2 id="undo-and-redo"><span class="header-section-number">1.4</span> Undo and Redo</h2>
+<p>We’d like to undo the changes made to <code>animals.txt</code> since the last commit. The first step is to get the ID of the commit we want to go back to. Use <code>git log --online</code> to show a list of commits with just the IDs and commit messages:</p>
+<pre><code>&gt; git log --oneline
+
+981cd55 Fixed Barracuda spelling, added shark and jellyfish, deleted monkey
+6fec032 Added animals.txt</code></pre>
+<p>The line starts with an ID code for the commit, and the message we entered for the commit. This is why the commit messages are important. It’s tempting to be vague in the message, but documenting changes makes it easier to do stuff later on!</p>
+<div class="figure">
+<img src="http://imgs.xkcd.com/comics/git_commit.png" title="From xkcd https://xkcd.com/1296/" alt="From xkcd https://xkcd.com/1296/" />
+<p class="caption">From xkcd https://xkcd.com/1296/</p>
+</div>
+<p>We want to go back to commit <code>6fec032</code>.</p>
+<p>To undo changes to a file since the last commit, you can use the <code>checkout</code> command. It takes two main arguments - the ID of the commit, and what file you want to checkout.</p>
+<pre><code>&gt; git checkout 6fec032 animals.txt</code></pre>
+<p>Re-open the <code>animals.txt</code> file again. You should see that the contents of the file have been changed back to how it was at the first commit. You can now edit this file, and then add these chagnes to the repository and make new commits, just like before.</p>
+<p>You can change the file back to the most recent commit (“redo”) by checking out the HEAD:</p>
+<pre><code>&gt; git checkout HEAD animals.txt</code></pre>
+<p>The file should now have 5 animals again.</p>
+<h3 id="tracking-multiple-files"><span class="header-section-number">1.4.1</span> Tracking multiple files</h3>
+<p>Let’s make another text file inside the <code>tutorial1</code> folder called <code>plants.txt</code> with the following text:</p>
+<pre>
+oak
+daffodil
+
+</pre>
+<p>We could add this file to the repository with <code>git add plants.txt</code>, but we can also add <em>all</em> files in the directory like this:</p>
+<pre><code>&gt; git add *</code></pre>
+<p>This would also add <em>all files in sub-directories</em>. Let’s commit the changes:</p>
+<pre><code>&gt; git commit -m &quot;Added plants.txt&quot;
+
+[master 1d8d88c] Added plants.txt
+ 1 file changed, 2 insertions(+)
+ create mode 100644 plants.txt</code></pre>
+<h3 id="checking-out-all-files"><span class="header-section-number">1.4.2</span> Checking out all files</h3>
+<p>We can now use <code>checkout</code> to undo <em>all</em> files back to a previous commit.</p>
+<p>First, let’s find the ID:</p>
+<pre><code>&gt;git log --oneline
+
+1d8d88c Added plants.txt
+981cd55 Fixed Barracuda spelling, added shark and jellyfish, deleted monkey
+6fec032 Added animals.txt</code></pre>
+<p>Let’s go back to the commit before we added plants.txt:</p>
+<pre><code>&gt; git checkout 981cd55
+
+Note: checking out &#39;981cd55&#39;.
+
+You are in &#39;detached HEAD&#39; state. You can look around, make experimental
+changes and commit them, and you can discard any commits you make in this
+state without impacting any branches by performing another checkout.
+
+If you want to create a new branch to retain commits you create, you may
+do so (now or later) by using -b with the checkout command again. Example:
+
+  git checkout -b &lt;new-branch-name&gt;
+
+HEAD is now at 981cd55... Fixed Barracuda spelling, added shark and jellyfish, deleted monkey</code></pre>
+<p>Now the folder will go back to how it looked before - we only have one file <code>animals.txt</code>.</p>
+<p>We get quite a long message warning us that we’re in a ‘detached HEAD’ state. This means that you can make any changes you want to the files in your directory and also make commits of these changes, but you can always return all files to the state that they were in</p>
+<pre><code>&gt; git checkout master</code></pre>
+<p>Here’s a diagram of what we did:</p>
+<div class="figure">
+<img src="images/CommitAndCheckout.png" />
+
+</div>
+<p>One good use for academia is to make a commit when you submit a project to a journal or conference. Mark this as e.g. “Version submitted to Nature”. When you get revisions back from reviewers, you can check what the project looked like when you submitted.</p>
+<h3 id="reverting-to-a-previous-state"><span class="header-section-number">1.4.3</span> Reverting to a previous state</h3>
+<p>The checkout command lets us “check out” the state of files at a previous time. But if we want to actually want to reverse the changes and keep working on the files as they were before, then we need to “revert”. Let’s revert back to the state after we added <code>animals.txt</code>.</p>
+<pre><code>&gt; git revert 1d8d88c</code></pre>
+<p>You’ll be asked for a revert message. The default is fine.</p>
+<p><em>Note that on some systems, you’ll be asked to write the revert message in a terminal-based editor like vim. Usually you can type <code>:</code> then <code>q</code> to continue.</em></p>
+<p>This command actually ‘undoes’ everything back to the commit we specified, but then works out the changes between that and the current commit, and adds a <em>new</em> commit at the end.</p>
+<div class="figure">
+<img src="images/Revert.png" />
+
+</div>
+<p>There’s now an extra commit in the log. Doing it this way means that we can undo changes, but still go back to the way the project looked after we fixed the barracuda spelling etc., if we want.</p>
+<h2 id="review"><span class="header-section-number">1.5</span> Review</h2>
+<p>In this tutorial, we learned how to initialise a repository: add files and commit changes:</p>
+<pre><code>&gt; git init</code></pre>
+<p>Then we make changes, add changes to the repository and commit the changes to the repository:</p>
+<pre><code>&gt; git add *
+&gt; git commit -m &quot;Put a message here to describe the changes&quot;</code></pre>
+<p>The two commands above are the ones you’ll use the most.</p>
+<p>We can also look at a list of commits to find commit ids:</p>
+<pre><code>&gt; git log --oneline</code></pre>
+<p>And go back to a previous state of a file:</p>
+<pre><code>&gt; git checkout &lt;commit id&gt; fileName.txt</code></pre>
+<p>Or ‘revert’ back to a previous state of the whole project:</p>
+<pre><code>&gt; git revert &lt;commit id&gt;</code></pre>
+<hr />
+<h3 id="go-on-to-the-next-section"><span class="header-section-number">1.5.1</span> <a href="Tutorial2.html">Go on to the next section</a></h3>
+</body>
+</html>

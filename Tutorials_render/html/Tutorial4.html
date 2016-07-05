@@ -1,0 +1,52 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title>Intro to git – Introduction to Git and Github: Tutorial 4 Miscellaneous features of git and GitHub</title>
+  <style type="text/css">code{white-space: pre;}</style>
+  <link rel="stylesheet" href="pandoc.css" type="text/css" />
+</head>
+<body>
+<div id="header">
+<h1 class="title">Introduction to Git and Github: Tutorial 4 Miscellaneous features of git and GitHub</h1>
+</div>
+<div id="TOC">
+<ul>
+<li><a href="#back-to-tutorial-1"><span class="toc-section-number">1</span> <a href="Tutorial1.html">Back to Tutorial 1</a></a></li>
+<li><a href="#back-to-tutorial-2"><span class="toc-section-number">2</span> <a href="Tutorial2.html">Back to Tutorial 2</a></a></li>
+<li><a href="#back-to-tutorial-3"><span class="toc-section-number">3</span> <a href="Tutorial3.html">Back to Tutorial 3</a></a></li>
+<li><a href="#introduction"><span class="toc-section-number">4</span> Introduction</a><ul>
+<li><a href="#untracking-files"><span class="toc-section-number">4.1</span> Untracking files</a></li>
+<li><a href="#avoid-adding-specific-files-to-a-repository"><span class="toc-section-number">4.2</span> Avoid adding specific files to a repository</a></li>
+<li><a href="#caching-github-password"><span class="toc-section-number">4.3</span> Caching github password</a></li>
+<li><a href="#viewing-github-content-directly"><span class="toc-section-number">4.4</span> Viewing GitHub content directly</a></li>
+<li><a href="#fetch-versus-pull"><span class="toc-section-number">4.5</span> fetch versus pull</a></li>
+</ul></li>
+</ul>
+</div>
+<h1 id="back-to-tutorial-1"><span class="header-section-number">1</span> <a href="Tutorial1.html">Back to Tutorial 1</a></h1>
+<h1 id="back-to-tutorial-2"><span class="header-section-number">2</span> <a href="Tutorial2.html">Back to Tutorial 2</a></h1>
+<h1 id="back-to-tutorial-3"><span class="header-section-number">3</span> <a href="Tutorial3.html">Back to Tutorial 3</a></h1>
+<h1 id="introduction"><span class="header-section-number">4</span> Introduction</h1>
+<h2 id="untracking-files"><span class="header-section-number">4.1</span> Untracking files</h2>
+<p>The <code>reset</code> command will remove the file from the repository, but it won’t delete the file from your system.</p>
+<pre><code>&gt; git reset plants.txt</code></pre>
+<h2 id="avoid-adding-specific-files-to-a-repository"><span class="header-section-number">4.2</span> Avoid adding specific files to a repository</h2>
+<p>Let’s say that you don’t want to track the changes to specific files in your repository. For instance, you might have personal information that you don’t want to make public.</p>
+<p>Add a text file to the top directory called <code>.gitignore</code> (note the dot at the start, no ‘.txt’ at the end), and add the files you want to avoid adding on a seperate line. e.g.:</p>
+<pre><code>data/participantNames.csv
+consentForms/*.pdf</code></pre>
+<p>This applies to the file “data/participantNames.csv” and all files in the “consentForms” folder ending in “.pdf”. These won’t be added to the repository.</p>
+<p>But be careful! This will only stop files being <strong>added</strong>. If they are already in the repository, this won’t remove them, so you need to add a gitigore file before your first commit.</p>
+<p>If you’ve added files to a repository, but you shouldn’t have, there are ways of removing them. But the safest and simplest thing to do is to copy the files to another location, delete the old repository and then make a new repository with a .gitignore file.</p>
+<h2 id="caching-github-password"><span class="header-section-number">4.3</span> Caching github password</h2>
+<p>You can store your password secuerly on your machine to avoid having to type it in at every puhs. There are a number of ways of doing this, see <a href="https://help.github.com/articles/caching-your-github-password-in-git/" class="uri">https://help.github.com/articles/caching-your-github-password-in-git/</a>.</p>
+<h2 id="viewing-github-content-directly"><span class="header-section-number">4.4</span> Viewing GitHub content directly</h2>
+<p>You can use services like htmlpreview to view html files in a repository. e.g.:</p>
+<p><a href="https://htmlpreview.github.io/?https://github.com/seannyD/SeansGitHubTutorial-Collaboration/blob/master/results/MainResults.html" class="uri">https://htmlpreview.github.io/?https://github.com/seannyD/SeansGitHubTutorial-Collaboration/blob/master/results/MainResults.html</a></p>
+<h2 id="fetch-versus-pull"><span class="header-section-number">4.5</span> fetch versus pull</h2>
+<p>The command <code>git pull</code> actually does two things: it downloads stuff from GitHub, then performs a <code>git merge</code>. If you just want to download stuff, use <code>git fetch</code>.</p>
+</body>
+</html>

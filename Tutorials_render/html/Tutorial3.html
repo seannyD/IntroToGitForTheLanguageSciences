@@ -1,0 +1,287 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title>Intro to git – Introduction to Git and Github: Tutorial 3 Collaboration using GitHub</title>
+  <style type="text/css">code{white-space: pre;}</style>
+  <link rel="stylesheet" href="pandoc.css" type="text/css" />
+</head>
+<body>
+<div id="header">
+<h1 class="title">Introduction to Git and Github: Tutorial 3 Collaboration using GitHub</h1>
+</div>
+<div id="TOC">
+<ul>
+<li><a href="#back-to-tutorial-1"><span class="toc-section-number">1</span> <a href="Tutorial1.html">Back to Tutorial 1</a></a></li>
+<li><a href="#back-to-tutorial-2"><span class="toc-section-number">2</span> <a href="Tutorial2.html">Back to Tutorial 2</a></a></li>
+<li><a href="#introduction"><span class="toc-section-number">3</span> Introduction</a><ul>
+<li><a href="#designing-projects-for-collaboration"><span class="toc-section-number">3.1</span> Designing projects for collaboration</a><ul>
+<li><a href="#file-structure"><span class="toc-section-number">3.1.1</span> File structure</a></li>
+<li><a href="#reproducability"><span class="toc-section-number">3.1.2</span> Reproducability</a></li>
+<li><a href="#documentation"><span class="toc-section-number">3.1.3</span> Documentation</a></li>
+</ul></li>
+<li><a href="#collaboration-on-a-github-project"><span class="toc-section-number">3.2</span> Collaboration on a GitHub project</a><ul>
+<li><a href="#cloning-a-repository"><span class="toc-section-number">3.2.1</span> Cloning a repository</a></li>
+</ul></li>
+<li><a href="#branching"><span class="toc-section-number">3.3</span> Branching</a></li>
+<li><a href="#making-changes"><span class="toc-section-number">3.4</span> Making changes</a><ul>
+<li><a href="#pushing-the-branch-back-to-github"><span class="toc-section-number">3.4.0.1</span> Pushing the branch back to GitHub</a></li>
+</ul></li>
+<li><a href="#merging-branches"><span class="toc-section-number">3.5</span> Merging branches</a><ul>
+<li><a href="#pull-the-most-recent-changes"><span class="toc-section-number">3.5.0.1</span> Pull the most recent changes</a></li>
+<li><a href="#merging-branches-1"><span class="toc-section-number">3.5.0.2</span> Merging branches</a></li>
+</ul></li>
+<li><a href="#viewing-other-peoples-changes"><span class="toc-section-number">3.6</span> Viewing other people’s changes</a></li>
+<li><a href="#merging-branches-in-your-local-project"><span class="toc-section-number">3.7</span> Merging branches in your local project</a></li>
+<li><a href="#review"><span class="toc-section-number">3.8</span> Review</a><ul>
+<li><a href="#go-on-to-the-next-section"><span class="toc-section-number">3.8.1</span> <a href="Tutorial4.html">Go on to the next section</a></a></li>
+</ul></li>
+</ul></li>
+</ul>
+</div>
+<h1 id="back-to-tutorial-1"><span class="header-section-number">1</span> <a href="Tutorial1.html">Back to Tutorial 1</a></h1>
+<h1 id="back-to-tutorial-2"><span class="header-section-number">2</span> <a href="Tutorial2.html">Back to Tutorial 2</a></h1>
+<h1 id="introduction"><span class="header-section-number">3</span> Introduction</h1>
+<p>In this tutorial, we’ll learn how to collaborate on projects using git and GitHub.</p>
+<p>To do this tutorial, you’ll need to be added as a collaborator on one of my GitHub projects. If you haven’t sent me your GitHub username, please email me.</p>
+<h2 id="designing-projects-for-collaboration"><span class="header-section-number">3.1</span> Designing projects for collaboration</h2>
+<h3 id="file-structure"><span class="header-section-number">3.1.1</span> File structure</h3>
+<p>It’s a good idea to have a very clear file structure for your project. This means that it’s easy to locate files, and it’s obvious where new files or changes should go.</p>
+<p>I usually have something like this:</p>
+<ul>
+<li>Main folder (Top folder for the version control)</li>
+<li>data
+<ul>
+<li>Raw data</li>
+<li>Processed data</li>
+</ul></li>
+<li>processing (any scripts for processing raw data)
+<ul>
+<li>R</li>
+<li>Python<br />
+</li>
+</ul></li>
+<li>analysis (any scripts for analysing results)
+<ul>
+<li>R</li>
+</ul></li>
+<li>results (for storing results)
+<ul>
+<li>graphs</li>
+</ul></li>
+<li>writeup (for storing drafts of articles)</li>
+</ul>
+<h3 id="reproducability"><span class="header-section-number">3.1.2</span> Reproducability</h3>
+<p>An ideal GitHub project will be completely self-sufficient and reproducible. That is, someone else should be able to download just the files that are in the repository, and reproduce all your results and output. To achieve this, consider</p>
+<ul>
+<li>Including all raw data inside the repository</li>
+<li>Including all scripts that process the data and produce graphs/results</li>
+<li>Using relative file paths in scripts. This means you should use paths like “../../data/RawData/Part1.csv”, rather than “C:/MyDocuments/Sean/LingProjects/data/RawData/Part1.csv”. This means that the scripts should run on somebody else’s computer.</li>
+</ul>
+<h3 id="documentation"><span class="header-section-number">3.1.3</span> Documentation</h3>
+<p>Documentation is important. It means having a “README” file for the project / each subflder, describing the contents of each file. If you include a file named “README.md” in the top directory of your repository, GitHub will use this as the project’s main page on the web. You should also document your code, describing what each function and set of lines does.</p>
+<h2 id="collaboration-on-a-github-project"><span class="header-section-number">3.2</span> Collaboration on a GitHub project</h2>
+<p>I made a GitHub project here:</p>
+<p><a href="https://github.com/seannyD/SeansGitHubTutorial-Collaboration" class="uri">https://github.com/seannyD/SeansGitHubTutorial-Collaboration</a></p>
+<p>Go to this page and have a look at the files and folders. It’s a project for a timed list experiment. Participants have to list as many items from a semantic domain as possible. The responses are written to a file, one line per response. Like this:</p>
+<pre>
+cow
+pig
+sheep
+salmon
+
+</pre>
+<p>The raw files can be found in the folder <a href="https://github.com/seannyD/SeansGitHubTutorial-Collaboration/tree/master/data/rawData/animals">data/rawData/animals</a>.</p>
+<p>The name of the file is the participant name/id followed by an underscore, then either ‘m’ or ‘b’, indicating if the participant was brought up monolingually or bilingually.</p>
+<p>There is an R script for collating and analysing the data in <code>analysis/R/analyseData.Rmd</code>, and this writes the results to <code>results/MainResults.html</code>.</p>
+<h3 id="cloning-a-repository"><span class="header-section-number">3.2.1</span> Cloning a repository</h3>
+<p>We’d like to add your own resonses to the project. The first step is to clone the repository from GitHub to your own local machine.</p>
+<p>Make another folder for this collaboration tutorial. Make sure it is <strong>not inside the folder for the previous tutorial</strong>, or inside any other folder which already has a github repository.</p>
+<p>Navigate to this folder in your terminal / GitBash. For me it’s something like:</p>
+<pre><code>&gt; cd ~/Documents/Teaching/IntroToGitHub/TutorialFolders/collaborationTutorial</code></pre>
+<p>Next we need to find the URL of the repository. Go to my repository page:</p>
+<p><a href="https://github.com/seannyD/SeansGitHubTutorial-Collaboration" class="uri">https://github.com/seannyD/SeansGitHubTutorial-Collaboration</a></p>
+<p>Look for a button labelled ‘Clone or download’. Click it and a little box will appear with a link. Copy this link.</p>
+<p>The link should be:</p>
+<pre><code>https://github.com/seannyD/SeansGitHubTutorial-Collaboration.git</code></pre>
+<p>Note that this is just the url of the main page for the project, but with “.git” at the end.</p>
+<p>In your terminal, type</p>
+<pre><code>&gt; git clone https://github.com/seannyD/SeansGitHubTutorial-Collaboration.git</code></pre>
+<p>You should see output like this:</p>
+<pre><code>Cloning into &#39;SeansGitHubTutorial-Collaboration&#39;...
+remote: Counting objects: 26, done.
+remote: Compressing objects: 100% (20/20), done.
+remote: Total 26 (delta 3), reused 26 (delta 3), pack-reused 0
+Unpacking objects: 100% (26/26), done.
+Checking connectivity... done.</code></pre>
+<p>Git should now download both the files and the repository structure to your machine. You should have a folder inside your working directory named <code>SeansGitHubTutorial-Collaboration</code>.</p>
+<h2 id="branching"><span class="header-section-number">3.3</span> Branching</h2>
+<p>We’re now going to edit our local version of the project, then upload our edits to the main project. Because other people might be working on this project at the same time, we want to work on a <strong>branch</strong>.</p>
+<p>The idea is that people can work on their own branches independently, then <strong>merge</strong> the branches into the master branch later.</p>
+<div class="figure">
+<img src="images/BranchingAndMerging.png" />
+
+</div>
+<p>Now that we’ve cloned the repository, let’s navigate inside the project folder. You should type something like:</p>
+<pre><code>&gt; cd SeansGitHubTutorial-Collaboration</code></pre>
+<p>Let’s check which branch we’re on:</p>
+<pre>
+> git branch 
+<span style="color:lightgreen">* master</span> 
+</pre>
+<p>This repository only has one brach - the master branch - and that’s our currently checked-out branch (you can tell by the * symbol).</p>
+<p>Now we can make our own branch to work on. I’m going to call my branch “SeanAddData”, but you should name it something so that it’s clear what’s going on in this branch.</p>
+<pre><code>&gt; git branch SeanAddData</code></pre>
+<p>Let’s check the branches again:</p>
+<pre>
+> git branch 
+    SeanAddData
+  <span style="color:lightgreen">* master</span> 
+</pre>
+<p>There are now two branches, but the master banch is still the checked-out one.</p>
+<p>Let’s checkout our branch (remember, your branch name will be different):</p>
+<pre><code>&gt; git checkout SeanAddData
+Switched to branch &#39;SeanAddData&#39;</code></pre>
+<h2 id="making-changes"><span class="header-section-number">3.4</span> Making changes</h2>
+<p>We can now make changes as before.</p>
+<p><strong><em>Add your own responses file</em></strong> to data/rawData/animals/. Make sure there’s one response per line, and that you name file something like “YourName_m.txt” (where m is monolingual and b is bilingual).</p>
+<p><strong><em>Add your changes to the repository branch</em></strong></p>
+<pre><code>&gt; git add *</code></pre>
+<p><strong><em>Commit your changes</em></strong>, adding a commit message that makes sense:</p>
+<pre><code>&gt; git commit -m &quot;Added data from &lt;Your name&gt;&quot;</code></pre>
+<h4 id="pushing-the-branch-back-to-github"><span class="header-section-number">3.4.0.1</span> Pushing the branch back to GitHub</h4>
+<p><strong><em>Push your branch to the GitHub repository</em></strong>. The first time we do this, we need to tell git that we want the ‘upstream’ branch to be the GitHub branch (the ‘origin’).</p>
+<pre><code>&gt; git push --set-upstream origin &lt;Your branch name&gt;</code></pre>
+<p>You should get output like this:</p>
+<pre><code>Counting objects: 6, done.
+Delta compression using up to 4 threads.
+Compressing objects: 100% (6/6), done.
+Writing objects: 100% (6/6), 647 bytes | 0 bytes/s, done.
+Total 6 (delta 1), reused 0 (delta 0)
+To https://github.com/seannyD/SeansGitHubTutorial-Collaboration.git
+ * [new branch]      SeanAddData -&gt; SeanAddData
+Branch SeanAddData set up to track remote branch SeanAddData from origin.</code></pre>
+<p>If we go back to the GitHub website, we now see that the project has 2 branches:</p>
+<div class="figure">
+<img src="images/BranchPage.png" />
+
+</div>
+<h2 id="merging-branches"><span class="header-section-number">3.5</span> Merging branches</h2>
+<p>The owner of the GitHub project can actually compare and merge branches directly on GitHub. There are many powerful features such as allowing people who have created branches to request that the owner merge their branch, and a discussion forum for debating how merges should happen.</p>
+<p>However, for now we’ll just show how to merge branches on the command line.</p>
+<p>In what follows, I assume that a collaborator (you):</p>
+<ul>
+<li>cloned the repository</li>
+<li>made a branch</li>
+<li>commited changes to the branch</li>
+<li>pushed the changes to the main GitHub page</li>
+</ul>
+<p>In the next section, the owner (me) will:</p>
+<ul>
+<li>pull this change to their own local repository</li>
+<li>merge the branches</li>
+<li>and then push the updated branch back to GitHub.</li>
+</ul>
+<h4 id="pull-the-most-recent-changes"><span class="header-section-number">3.5.0.1</span> Pull the most recent changes</h4>
+<p>The first step is to make sure that your repository is up to date. Others may have made changes since you created your branch. You can pull changes at any time, even if you don’t intend to merge branches.</p>
+<p>First, let’s make sure we’ve switched back to the master branch:</p>
+<pre><code>&gt; git branch master</code></pre>
+<p>Now let’s <strong>pull</strong> new data from GitHub (this is the opposite of <strong>push</strong>).</p>
+<pre><code>&gt; git pull
+
+remote: Counting objects: 6, done.
+remote: Compressing objects: 100% (5/5), done.
+remote: Total 6 (delta 1), reused 6 (delta 1), pack-reused 0
+Unpacking objects: 100% (6/6), done.
+From https://github.com/seannyD/SeansGitHubTutorial-Collaboration
+ * [new branch]      SeanAddData -&gt; origin/SeanAddData
+Already up-to-date.</code></pre>
+<h4 id="merging-branches-1"><span class="header-section-number">3.5.0.2</span> Merging branches</h4>
+<p>Let’s check the branches we have available. Note that we’re using the <code>-a</code> option to make sure we see local and remote branches.</p>
+<pre><code>&gt;   git branch -a
+* master
+  remotes/origin/SeanAddData
+  remotes/origin/master
+  </code></pre>
+<p>Our checked-out branch is the master branch, and can see the new branch (origin/SeanAddData). Let’s merge it in using the <code>merge</code> command:</p>
+<pre><code>&gt; git merge origin/SeanAddData
+
+Updating b595bad..e3380a9
+Fast-forward
+ data/rawData/animals/SeanR_b.txt | 9 +++++++++
+ 1 file changed, 9 insertions(+)
+ create mode 100644 data/rawData/animals/SeanR_b.txt
+ </code></pre>
+<p>We get a message saying that 1 file was added to the master branch.</p>
+<p>And let’s push the changes to GitHub:</p>
+<pre><code>&gt; git push</code></pre>
+<p>On the website, we can see that the rawData folder has a new file (SeanR_b.txt) in it, with the commit message that we made in our branch.</p>
+<div class="figure">
+<img src="images/NewMerge.png" />
+
+</div>
+<h2 id="viewing-other-peoples-changes"><span class="header-section-number">3.6</span> Viewing other people’s changes</h2>
+<p>When you pull updates from GitHub, you’ll probably want to know what’s changed. First, let’s see what the commit messages are like:</p>
+<pre><code>&gt; git log --oneline
+
+2a06936 edited readme
+e3380a9 Add data from Sean
+b595bad Add processed data file
+d4d7a4f Added raw data and first analysis script
+26bf47a first commit</code></pre>
+<p>Let’s say we want to find out what happened between “Add data from Sean” and “edited readme”. We can use <code>git diff</code> followed by the two commit IDs we want to compare.</p>
+<pre><code>&gt; git diff e3380a9 2a06936</code></pre>
+<p>This gives the following output:</p>
+<pre>
+<b>diff --git a/README.md b/README.md
+index 5d4f2d8..9a02461 100644
+--- a/README.md
++++ b/README.md</b>
+<span style="color:lightblue">@@ -1 +1,9 @@</span>
+<span style="color:red">-# Collaboration tutorial# SeansGitHubTutorial-Collaboration</span>
+<span style="color:green">+# Collaboration tutorial
++
++It's a project for a timed list experiment.  Participants have to
+ list as many items from a semantic domain as possible.  The 
+ responses are written to a file, one line per response.
++
++The raw files can be found in the folder [data/rawData/animals]
+(https://github.com/seannyD/SeansGitHubTutorial-Collaboration/tree/master/data/rawData/animals).
++
++The name of the file is the participant name/id followed by an 
+underscore, then either 'm' or 'b', indicating if the participant was
+ brought up monolingually or bilingually.
++
++There is an R script for collating and analysing the data in 
+`analysis/R/analyseData.Rmd`, and this writes the results to 
+`results/MainResults.html`.</span>
+<b>
+diff --git a/data/.DS_Store b/data/.DS_Store
+index fc68288..a3d5c16 100644</b>
+Binary files a/data/.DS_Store and b/data/.DS_Store differ
+<b>diff --git a/data/rawData/.DS_Store b/data/rawData/.DS_Store
+index 5008ddf..60cf046 100644</b>
+Binary files a/data/rawData/.DS_Store and b/data/rawData/.DS_Store differ
+</pre>
+<p>This means that there were edits to <strong>README.md</strong>. The line at the start of the file “# Collaboration tutorial# SeansGitHubTutorial-Collaboration”, was deleted and several other lines were added. Basically, the last edit just updated the README file to include a fuller description.</p>
+<h2 id="merging-branches-in-your-local-project"><span class="header-section-number">3.7</span> Merging branches in your local project</h2>
+<p>In the example above, the collaborators made branches, then the project owner merged them. But you can merge branches in your own local repository. You can use <code>merge</code> in the same way as above:</p>
+<p>Make sure you’re in the branch you want to merge <em>into</em> (e.g. the master branch:</p>
+<pre><code>&gt; git branch master</code></pre>
+<p>Then merge the branches</p>
+<pre><code>&gt; git merge NameOfBranchToMerge</code></pre>
+<h2 id="review"><span class="header-section-number">3.8</span> Review</h2>
+<p>In this tutorial we learned how to view branches:</p>
+<pre><code>&gt; git branch </code></pre>
+<p>… create new branches:</p>
+<pre><code>&gt; git branch newBranchName</code></pre>
+<p>… switch branches:</p>
+<pre><code>&gt; git branch nameOfBranchToSwitchTo</code></pre>
+<p>We learned that, if you’re collaborating, development should always be done on a branch, not the master. We can make changes to our local branch with <code>git add</code> and <code>git commit</code> as before. We can push our branch to the GitHub page with <code>git push</code>. When we’re done, we can merge branches:</p>
+<pre><code>&gt; git merge branchToMergeFrom</code></pre>
+<hr />
+<h3 id="go-on-to-the-next-section"><span class="header-section-number">3.8.1</span> <a href="Tutorial4.html">Go on to the next section</a></h3>
+</body>
+</html>
