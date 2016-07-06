@@ -62,6 +62,15 @@ By default, GitHub projects do not specify a license.  When you create a GitHub 
 The command `git pull` actually does two things: it downloads stuff from GitHub, then performs a `git merge`.  If you just want to download stuff, use `git fetch`.
 
 
+## Avoid tracking mac .DS_Store files
 
+.DS_Store files are files that macs use to keep track of how you view folders.  They're not really important to a project, but can cause conflicts because different users will modify the files in different ways.  There's one of these files in every folder, so a simple line in .gitignore won't work.  You can tell git to always ignore .DS_Store files in all repositories:
+
+	> echo .DS_Store >> ~/.gitignore_global
+	> git config --global core.excludesfile ~/.gitignore_global
+
+Note that this is not retroactive. To remove .DS_Store files from an existing repository, you can use the following line.  But be careful - this uses `git rm` which can delete files from your system.
+
+	> find . -name .DS_Store -print0 | xargs -0 git rm --ignore-unmatch
 
 

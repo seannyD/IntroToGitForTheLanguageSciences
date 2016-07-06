@@ -25,6 +25,7 @@
 <li><a href="#viewing-github-content-directly"><span class="toc-section-number">4.5</span> Viewing GitHub content directly</a></li>
 <li><a href="#github-licences"><span class="toc-section-number">4.6</span> GitHub licences</a></li>
 <li><a href="#fetch-versus-pull"><span class="toc-section-number">4.7</span> fetch versus pull</a></li>
+<li><a href="#avoid-tracking-mac-.ds_store-files"><span class="toc-section-number">4.8</span> Avoid tracking mac .DS_Store files</a></li>
 </ul></li>
 </ul>
 </div>
@@ -56,5 +57,11 @@ consentForms/*.pdf</code></pre>
 <p>By default, GitHub projects do not specify a license. When you create a GitHub repository, there’s an option to add a license from a list of candidates. All that this does is add a file called LICENCE.txt into your project with the legal terms of the licence. The suggested options limit people’s ability to take and modify your work. A better option for freer distribution which allows people to copy and modify as long as they attribute you is the “GNU AGPLv3” (GNU Affero General Public License v3.0) <a href="http://choosealicense.com/licenses/agpl-3.0/">see here fore more details</a>. Note that most Creative Commons licences are not suitable for software. More options can be found on <a href="http://choosealicense.com/">this site</a>.</p>
 <h2 id="fetch-versus-pull"><span class="header-section-number">4.7</span> fetch versus pull</h2>
 <p>The command <code>git pull</code> actually does two things: it downloads stuff from GitHub, then performs a <code>git merge</code>. If you just want to download stuff, use <code>git fetch</code>.</p>
+<h2 id="avoid-tracking-mac-.ds_store-files"><span class="header-section-number">4.8</span> Avoid tracking mac .DS_Store files</h2>
+<p>.DS_Store files are files that macs use to keep track of how you view folders. They’re not really important to a project, but can cause conflicts because different users will modify the files in different ways. There’s one of these files in every folder, so a simple line in .gitignore won’t work. You can tell git to always ignore .DS_Store files in all repositories:</p>
+<pre><code>&gt; echo .DS_Store &gt;&gt; ~/.gitignore_global
+&gt; git config --global core.excludesfile ~/.gitignore_global</code></pre>
+<p>Note that this is not retroactive. To remove .DS_Store files from an existing repository, you can use the following line. But be careful - this uses <code>git rm</code> which can delete files from your system.</p>
+<pre><code>&gt; find . -name .DS_Store -print0 | xargs -0 git rm --ignore-unmatch</code></pre>
 </body>
 </html>
