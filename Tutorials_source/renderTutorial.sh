@@ -18,8 +18,8 @@ cp images/*.png ../../Tutorials_render/html/images/
 
 wkhtmltopdf --zoom 0.75 ../../Tutorials_render/html/Tutorial2.html ../../Tutorials_render/pdf/Tutorial2.pdf
 
-cd ../tutorial3/
-pandoc -s -S --toc --toc-depth 4 -N -c pandoc.css  -T "Intro to git" Tutorial3_Collaboration.md -o ../../Tutorials_render/html/Tutorial3.html 
+cd ../tutorial3_Fork/
+pandoc -s -S --toc --toc-depth 4 -N -c pandoc.css  -T "Intro to git" Tutorial3_ForkingAndMerging.md -o ../../Tutorials_render/html/Tutorial3.html 
 cp images/*.png ../../Tutorials_render/html/images/
 
 wkhtmltopdf --zoom 0.75 ../../Tutorials_render/html/Tutorial3.html ../../Tutorials_render/pdf/Tutorial3.pdf

@@ -23,20 +23,21 @@
 <li><a href="#documentation"><span class="toc-section-number">3.1.3</span> Documentation</a></li>
 </ul></li>
 <li><a href="#collaboration-on-a-github-project"><span class="toc-section-number">3.2</span> Collaboration on a GitHub project</a><ul>
-<li><a href="#cloning-a-repository"><span class="toc-section-number">3.2.1</span> Cloning a repository</a></li>
+<li><a href="#overview"><span class="toc-section-number">3.2.1</span> Overview</a></li>
+<li><a href="#forking-a-github-repository"><span class="toc-section-number">3.2.2</span> Forking a GitHub repository</a></li>
+<li><a href="#clone-the-forked-repository"><span class="toc-section-number">3.2.3</span> Clone the forked repository</a></li>
 </ul></li>
 <li><a href="#branching"><span class="toc-section-number">3.3</span> Branching</a></li>
 <li><a href="#making-changes"><span class="toc-section-number">3.4</span> Making changes</a><ul>
-<li><a href="#pushing-the-branch-back-to-github"><span class="toc-section-number">3.4.0.1</span> Pushing the branch back to GitHub</a></li>
+<li><a href="#pushing-the-branch-back-to-github"><span class="toc-section-number">3.4.1</span> Pushing the branch back to GitHub</a></li>
 </ul></li>
-<li><a href="#merging-branches"><span class="toc-section-number">3.5</span> Merging branches</a><ul>
-<li><a href="#pull-the-most-recent-changes"><span class="toc-section-number">3.5.0.1</span> Pull the most recent changes</a></li>
-<li><a href="#merging-branches-1"><span class="toc-section-number">3.5.0.2</span> Merging branches</a></li>
-</ul></li>
-<li><a href="#viewing-other-peoples-changes"><span class="toc-section-number">3.6</span> Viewing other people’s changes</a></li>
-<li><a href="#merging-branches-in-your-local-project"><span class="toc-section-number">3.7</span> Merging branches in your local project</a></li>
-<li><a href="#review"><span class="toc-section-number">3.8</span> Review</a><ul>
-<li><a href="#go-on-to-the-next-section"><span class="toc-section-number">3.8.1</span> <a href="Tutorial4.html">Go on to the next section</a></a></li>
+<li><a href="#making-a-pull-request"><span class="toc-section-number">3.5</span> Making a pull request</a></li>
+<li><a href="#updaing-your-local-copy"><span class="toc-section-number">3.6</span> Updaing your local copy</a></li>
+<li><a href="#viewing-other-peoples-changes"><span class="toc-section-number">3.7</span> Viewing other people’s changes</a></li>
+<li><a href="#merging-branches-in-your-local-project"><span class="toc-section-number">3.8</span> Merging branches in your local project</a></li>
+<li><a href="#review"><span class="toc-section-number">3.9</span> Review</a></li>
+<li><a href="#appliations-in-linguistics"><span class="toc-section-number">3.10</span> Appliations in linguistics</a><ul>
+<li><a href="#go-on-to-the-next-section"><span class="toc-section-number">3.10.1</span> <a href="Tutorial4.html">Go on to the next section</a></a></li>
 </ul></li>
 </ul></li>
 </ul>
@@ -96,18 +97,59 @@ salmon
 <p>The raw files can be found in the folder <a href="https://github.com/seannyD/SeansGitHubTutorial-Collaboration/tree/master/data/rawData/animals">data/rawData/animals</a>.</p>
 <p>The name of the file is the participant name/id followed by an underscore, then either ‘m’ or ‘b’, indicating if the participant was brought up monolingually or bilingually.</p>
 <p>There is an R script for collating and analysing the data in <code>analysis/R/analyseData.Rmd</code>, and this writes the results to <code>results/MainResults.html</code>.</p>
-<h3 id="cloning-a-repository"><span class="header-section-number">3.2.1</span> Cloning a repository</h3>
-<p>We’d like to add your own resonses to the project. The first step is to clone the repository from GitHub to your own local machine.</p>
+<p>I’m the owner of the project, which means I make all the decisions about how edits are done. This is me:</p>
+<div class="figure">
+<img src="images/me.png" />
+
+</div>
+<p>You’ll be a contributor, this is what you look like:</p>
+<div class="figure">
+<img src="images/you.png" />
+
+</div>
+<p>If the repository is public, you don’t need permission to download the repository nor to make changes. But I’m the only one who can merge your changes into the main project. (Actually, “collaborators” can also do this, but that’s another issue).</p>
+<h3 id="overview"><span class="header-section-number">3.2.1</span> Overview</h3>
+<p>Let’s say you’d like make changes to the project. We’ll take the following steps:</p>
+<ul>
+<li><strong>Fork</strong> the GitHub repository</li>
+<li><strong>Clone</strong> the forked repository onto our local system</li>
+<li>Make a new <strong>branch</strong> of the project</li>
+<li>Edit the branch to make our changes</li>
+<li>Add and commit our changes</li>
+<li>Make a pull request to the master repository</li>
+</ul>
+<h3 id="forking-a-github-repository"><span class="header-section-number">3.2.2</span> Forking a GitHub repository</h3>
+<p>Go to github.com and sign in.</p>
+<p>Got to (https://github.com/seannyD/SeansGitHubTutorial-Collaboration)[https://github.com/seannyD/SeansGitHubTutorial-Collaboration]</p>
+<p>Click on the “Fork” button in the top right corner. This will make a copy of the project <em>on the github server</em> (not your local machine).</p>
+<div class="figure">
+<img src="images/Fork.png" />
+
+</div>
+<p>After a few moments, you’ll have a new page which shows your forked repository.</p>
+<p>Note that the top left of the screen tells you it’s a fork:</p>
+<div class="figure">
+<img src="images/ForkedScreen.png" />
+
+</div>
+<p>If you were to go back to your GitHub homepage, you’d see a tab on the right looking like this:</p>
+<div class="figure">
+<img src="images/ForkedScreenHome.png" />
+
+</div>
+<p>Note the little ‘fork’ symbol next to the project name.</p>
+<p>This is now <em>your</em> project. But GitHub knows that it’s a copy of another project, and it’ll do some smart things later to help us merge changes.</p>
+<h3 id="clone-the-forked-repository"><span class="header-section-number">3.2.3</span> Clone the forked repository</h3>
+<p>Next we need to find the URL of the repository. Go to your GitHub fork page and find the “clone” button:</p>
+<div class="figure">
+<img src="images/cloneButton.png" />
+
+</div>
+<p>Click it and a little box will appear with a link. Copy this link (make sure the link starts with “https”).</p>
 <p>Make another folder for this collaboration tutorial. Make sure it is <strong>not inside the folder for the previous tutorial</strong>, or inside any other folder which already has a github repository.</p>
 <p>Navigate to this folder in your terminal / GitBash. For me it’s something like:</p>
 <pre><code>&gt; cd ~/Documents/Teaching/IntroToGitHub/TutorialFolders/collaborationTutorial</code></pre>
-<p>Next we need to find the URL of the repository. Go to my repository page:</p>
-<p><a href="https://github.com/seannyD/SeansGitHubTutorial-Collaboration" class="uri">https://github.com/seannyD/SeansGitHubTutorial-Collaboration</a></p>
-<p>Look for a button labelled ‘Clone or download’. Click it and a little box will appear with a link. Copy this link.</p>
-<p>The link should be:</p>
-<pre><code>https://github.com/seannyD/SeansGitHubTutorial-Collaboration.git</code></pre>
-<p>Note that this is just the url of the main page for the project, but with “.git” at the end.</p>
-<p>In your terminal, type</p>
+<p>Now let’s clone the repository. In your terminal, type</p>
 <pre><code>&gt; git clone https://github.com/seannyD/SeansGitHubTutorial-Collaboration.git</code></pre>
 <p>You should see output like this:</p>
 <pre><code>Cloning into &#39;SeansGitHubTutorial-Collaboration&#39;...
@@ -117,6 +159,35 @@ remote: Total 26 (delta 3), reused 26 (delta 3), pack-reused 0
 Unpacking objects: 100% (26/26), done.
 Checking connectivity... done.</code></pre>
 <p>Git should now download both the files and the repository structure to your machine. You should have a folder inside your working directory named <code>SeansGitHubTutorial-Collaboration</code>.</p>
+<p>Navigate inside this folder:</p>
+<pre><code>&gt; cd SeansGitHubTutorial-Collaboration</code></pre>
+<p>We can now look at the commits:</p>
+<pre><code>&gt; git log --oneline
+
+959a0f7 Merge pull request #4 from johannadevos/JohannaAddFiles
+7e54ceb Merge pull request #5 from kreetrapper/alexbranch
+5e64f0a Merge pull request #9 from LiekeHofmans/liekefile
+266af8f Merge pull request #6 from karinilse/karins_animals
+4ec4311 Merge pull request #8 from wirrbeltier/MoritzAddFiles
+35bc040 Merge pull request #10 from seanny2d/SeanAddFiles
+3436a10 Merge pull request #11 from seannyD/monjabranch
+0c85579 Merge pull request #3 from seannyD/MarkAddFiles
+0c25a2f &quot;Added Johanna&#39;s files # On branch JohannaAddFiles&quot;
+077615d added animals file from Moritz
+8445c9d added data from Lieke
+a8550e1 Added data from Sean
+883b41f Added data from Alex
+80d4ef4 added data of Monja
+6ebe240 added data from karin
+7aefae8 adding md_m.txt
+5a051eb removed test files
+ebd8d61 Merge pull request #2 from seanny2d/testBranch
+cf7c705 test branch added
+9eb8ef8 Merge pull request #1 from seanny2d/master
+1fe2ffa add test file
+3705b5c adjusted Winners script
+ec2a9e4 winner code fix</code></pre>
+<p>There are lots of commits! In fact, more than can be displayed in the terminal at one time. You can press ‘Enter’ to scroll through the rest of the commits, or press ‘q’ to get back to the command prompt.</p>
 <h2 id="branching"><span class="header-section-number">3.3</span> Branching</h2>
 <p>We’re now going to edit our local version of the project, then upload our edits to the main project. Because other people might be working on this project at the same time, we want to work on a <strong>branch</strong>.</p>
 <p>The idea is that people can work on their own branches independently, then <strong>merge</strong> the branches into the master branch later.</p>
@@ -124,8 +195,6 @@ Checking connectivity... done.</code></pre>
 <img src="images/BranchingAndMerging.png" />
 
 </div>
-<p>Now that we’ve cloned the repository, let’s navigate inside the project folder. You should type something like:</p>
-<pre><code>&gt; cd SeansGitHubTutorial-Collaboration</code></pre>
 <p>Let’s check which branch we’re on:</p>
 <pre>
 > git branch 
@@ -145,13 +214,14 @@ Checking connectivity... done.</code></pre>
 <pre><code>&gt; git checkout SeanAddData
 Switched to branch &#39;SeanAddData&#39;</code></pre>
 <h2 id="making-changes"><span class="header-section-number">3.4</span> Making changes</h2>
-<p>We can now make changes as before.</p>
-<p><strong><em>Add your own responses file</em></strong> to data/rawData/animals/. Make sure there’s one response per line, and that you name file something like “YourName_m.txt” (where m is monolingual and b is bilingual).</p>
+<p>We can now make changes as before, but now safely on your own branch.</p>
+<p>If you haven’t already, make a new text file and list in it as many animals as you can in 30 seconds.</p>
+<p><strong><em>Add your own response file</em></strong> to data/rawData/animals/. Make sure there’s one response per line, and that you name file something like “YourName_m.txt” (where m is monolingual and b is bilingual).</p>
 <p><strong><em>Add your changes to the repository branch</em></strong></p>
 <pre><code>&gt; git add *</code></pre>
 <p><strong><em>Commit your changes</em></strong>, adding a commit message that makes sense:</p>
 <pre><code>&gt; git commit -m &quot;Added data from &lt;Your name&gt;&quot;</code></pre>
-<h4 id="pushing-the-branch-back-to-github"><span class="header-section-number">3.4.0.1</span> Pushing the branch back to GitHub</h4>
+<h3 id="pushing-the-branch-back-to-github"><span class="header-section-number">3.4.1</span> Pushing the branch back to GitHub</h3>
 <p><strong><em>Push your branch to the GitHub repository</em></strong>. The first time we do this, we need to tell git that we want the ‘upstream’ branch to be the GitHub branch (the ‘origin’).</p>
 <pre><code>&gt; git push --set-upstream origin &lt;Your branch name&gt;</code></pre>
 <p>You should get output like this:</p>
@@ -163,30 +233,39 @@ Total 6 (delta 1), reused 0 (delta 0)
 To https://github.com/seannyD/SeansGitHubTutorial-Collaboration.git
  * [new branch]      SeanAddData -&gt; SeanAddData
 Branch SeanAddData set up to track remote branch SeanAddData from origin.</code></pre>
-<p>If we go back to the GitHub website, we now see that the project has 2 branches:</p>
+<h2 id="making-a-pull-request"><span class="header-section-number">3.5</span> Making a pull request</h2>
+<p>If we go back to your fork project on the GitHub website, we now see two things:</p>
+<ol style="list-style-type: decimal">
+<li>that the project has one more branch, and that the latest commit was a few seconds ago, with the commit message you made.</li>
+<li>There’s a button labelled “Compare and Pull request”</li>
+</ol>
 <div class="figure">
-<img src="images/BranchPage.png" />
+<img src="images/BranchAdded.png" />
 
 </div>
-<h2 id="merging-branches"><span class="header-section-number">3.5</span> Merging branches</h2>
-<p>The owner of the GitHub project can actually compare and merge branches directly on GitHub. There are many powerful features such as allowing people who have created branches to request that the owner merge their branch, and a discussion forum for debating how merges should happen.</p>
-<p>However, for now we’ll just show how to merge branches on the command line.</p>
-<p>In what follows, I assume that a collaborator (you):</p>
-<ul>
-<li>cloned the repository</li>
-<li>made a branch</li>
-<li>commited changes to the branch</li>
-<li>pushed the changes to the main GitHub page</li>
-</ul>
-<p>In the next section, the owner (me) will:</p>
-<ul>
-<li>pull this change to their own local repository</li>
-<li>merge the branches</li>
-<li>and then push the updated branch back to GitHub.</li>
-</ul>
-<h4 id="pull-the-most-recent-changes"><span class="header-section-number">3.5.0.1</span> Pull the most recent changes</h4>
-<p>The first step is to make sure that your repository is up to date. Others may have made changes since you created your branch. You can pull changes at any time, even if you don’t intend to merge branches.</p>
-<p>First, let’s make sure we’ve switched back to the master branch:</p>
+<p>Click on “Compare and Pull request”. You’ll get a page like this:</p>
+<div class="figure">
+<img src="images/PullRequest.png" />
+
+</div>
+<p>You can add a title to your pull request, and even write a comment. When you’re collaborating with lots of people, this is very useful. You can describe your change in detail, and argue why your change should become part of the main project. Later on, GitHub offers a forum for people to discuss this.</p>
+<p>Fill in a message and click “Create pull request”.</p>
+<p>Now a message is sent to me, the owner, that you’ve made a request. This is what I see on my GitHub homepage:</p>
+<div class="figure">
+<img src="images/OwnerNotified.png" />
+
+</div>
+<p>I click on the link, and I get a summary of the changes you made. I then get two options:</p>
+<div class="figure">
+<img src="images/OwnerOptions.png" />
+
+</div>
+<p>The first tells me there are no conflicts between our versions, so I can “Merge pull request”. Or I can add a comment that will be sent to you, perhaps explaining why this shouldn’t be added, asking for clarification or asking for a particular change.</p>
+<p>I click “Merge pull request” (and I get a chance to add my own comment which will become part of a commit message).</p>
+<p>After I’ve confirmed the merge, your changes will show up on the main project page (not just your fork). Your changes are now part of the master branch!</p>
+<h2 id="updaing-your-local-copy"><span class="header-section-number">3.6</span> Updaing your local copy</h2>
+<p>You made changes and I merged them into the master project, but you don’t have the most up to date version yet on your local machine. So you should pull the changes from the server. You can pull changes at any time, even if you don’t intend to merge branches.</p>
+<p>First, let’s <strong>make sure we’ve switched back to the master branch</strong>:</p>
 <pre><code>&gt; git branch master</code></pre>
 <p>Now let’s <strong>pull</strong> new data from GitHub (this is the opposite of <strong>push</strong>).</p>
 <pre><code>&gt; git pull
@@ -198,31 +277,7 @@ Unpacking objects: 100% (6/6), done.
 From https://github.com/seannyD/SeansGitHubTutorial-Collaboration
  * [new branch]      SeanAddData -&gt; origin/SeanAddData
 Already up-to-date.</code></pre>
-<h4 id="merging-branches-1"><span class="header-section-number">3.5.0.2</span> Merging branches</h4>
-<p>Let’s check the branches we have available. Note that we’re using the <code>-a</code> option to make sure we see local and remote branches.</p>
-<pre><code>&gt;   git branch -a
-* master
-  remotes/origin/SeanAddData
-  remotes/origin/master
-  </code></pre>
-<p>Our checked-out branch is the master branch, and can see the new branch (origin/SeanAddData). Let’s merge it in using the <code>merge</code> command:</p>
-<pre><code>&gt; git merge origin/SeanAddData
-
-Updating b595bad..e3380a9
-Fast-forward
- data/rawData/animals/SeanR_b.txt | 9 +++++++++
- 1 file changed, 9 insertions(+)
- create mode 100644 data/rawData/animals/SeanR_b.txt
- </code></pre>
-<p>We get a message saying that 1 file was added to the master branch.</p>
-<p>And let’s push the changes to GitHub:</p>
-<pre><code>&gt; git push</code></pre>
-<p>On the website, we can see that the rawData folder has a new file (SeanR_b.txt) in it, with the commit message that we made in our branch.</p>
-<div class="figure">
-<img src="images/NewMerge.png" />
-
-</div>
-<h2 id="viewing-other-peoples-changes"><span class="header-section-number">3.6</span> Viewing other people’s changes</h2>
+<h2 id="viewing-other-peoples-changes"><span class="header-section-number">3.7</span> Viewing other people’s changes</h2>
 <p>When you pull updates from GitHub, you’ll probably want to know what’s changed. First, let’s see what the commit messages are like:</p>
 <pre><code>&gt; git log --oneline
 
@@ -266,22 +321,34 @@ index 5008ddf..60cf046 100644</b>
 Binary files a/data/rawData/.DS_Store and b/data/rawData/.DS_Store differ
 </pre>
 <p>This means that there were edits to <strong>README.md</strong>. The line at the start of the file “# Collaboration tutorial# SeansGitHubTutorial-Collaboration”, was deleted and several other lines were added. Basically, the last edit just updated the README file to include a fuller description.</p>
-<h2 id="merging-branches-in-your-local-project"><span class="header-section-number">3.7</span> Merging branches in your local project</h2>
+<h2 id="merging-branches-in-your-local-project"><span class="header-section-number">3.8</span> Merging branches in your local project</h2>
 <p>In the example above, the collaborators made branches, then the project owner merged them. But you can merge branches in your own local repository. You can use <code>merge</code> in the same way as above:</p>
 <p>Make sure you’re in the branch you want to merge <em>into</em> (e.g. the master branch:</p>
 <pre><code>&gt; git branch master</code></pre>
 <p>Then merge the branches</p>
 <pre><code>&gt; git merge NameOfBranchToMerge</code></pre>
-<h2 id="review"><span class="header-section-number">3.8</span> Review</h2>
-<p>In this tutorial we learned how to view branches:</p>
+<h2 id="review"><span class="header-section-number">3.9</span> Review</h2>
+<p>In this tutorial we learned how to <em>fork</em> a GitHub repository. We can then <em>clone</em> that fork to our local machine using:</p>
+<pre><code>&gt; git clone &lt;web address of fork&gt;</code></pre>
+<p>We also learned commands to view branches:</p>
 <pre><code>&gt; git branch </code></pre>
 <p>… create new branches:</p>
 <pre><code>&gt; git branch newBranchName</code></pre>
 <p>… switch branches:</p>
 <pre><code>&gt; git branch nameOfBranchToSwitchTo</code></pre>
-<p>We learned that, if you’re collaborating, development should always be done on a branch, not the master. We can make changes to our local branch with <code>git add</code> and <code>git commit</code> as before. We can push our branch to the GitHub page with <code>git push</code>. When we’re done, we can merge branches:</p>
+<p>We learned that, if you’re collaborating, development should always be done on a branch, not the master. We can make changes to our local branch with <code>git add</code> and <code>git commit</code> as before. We can push our branch to the GitHub page with <code>git push</code>. When we’re done, we can push our project to our fork page, then make a <strong>pull request</strong>. If the owner of the project accepts the request, our changes will become part of the master project.</p>
+<p>If we want, we can merge branches on our local machine:</p>
 <pre><code>&gt; git merge branchToMergeFrom</code></pre>
+<h2 id="appliations-in-linguistics"><span class="header-section-number">3.10</span> Appliations in linguistics</h2>
+<p>The Glottolog database is a database of the world’s languages, classified into families and sub-families: <a href="http://glottolog.org/" class="uri">http://glottolog.org/</a>.</p>
+<p>It’s edited and maintained through GitHub: <a href="https://github.com/clld/glottolog-data" class="uri">https://github.com/clld/glottolog-data</a>.</p>
+<p>This means you can fork this repository, clone it to your machine, make changes (e.g. add a new language, or change what family a language belongs to), then make a pull request. The owners of glottolog will discuss your change, and may accept it. Your change will then be reflected on the glottolog website and in the database. You can change the course of linguistic history!</p>
+<p>The GitHub webpage for Glottolog is also a place where people can raise issues, even if they’re not familiar with git. Here’s some recent issues being discussed:</p>
+<div class="figure">
+<img src="images/Glottolog.png" />
+
+</div>
 <hr />
-<h3 id="go-on-to-the-next-section"><span class="header-section-number">3.8.1</span> <a href="Tutorial4.html">Go on to the next section</a></h3>
+<h3 id="go-on-to-the-next-section"><span class="header-section-number">3.10.1</span> <a href="Tutorial4.html">Go on to the next section</a></h3>
 </body>
 </html>

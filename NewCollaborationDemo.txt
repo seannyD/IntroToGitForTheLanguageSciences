@@ -1,0 +1,6 @@
+Fork repository
+Clone repository
+Make branch
+Switch to branch
+Make changes
+Make pull request

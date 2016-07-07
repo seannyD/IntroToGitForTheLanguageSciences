@@ -25,20 +25,6 @@ If you pay for a github membership, you can create private repositories, or you 
 See the last tutorial for a way of making sure some files are not included in the repository.
 
 
-## Set your git username
-
-When collaborating, it's good to know who makes what changes.  You can tell git what your github username and email address is using `git config`.
-
-My github name is seannyD and my email is sean.roberts@hotmail.com, so I would use:
-
-	> git config --global user.name "seannyD"
-	> git config --global user.email "sean.roberts@hotmail.com"
-
-Set your own username and email now.
-
-*Note that the "--global" command sets your username for all repositories.  You can set the username just for the current repository by navigating to the repository and using e.g. `git config user.name "seannyD"`.*
-
-
 ## Adding a remote repository
 
 In tutorial 1 we created a git repository.  Let's link that to an online repository on GitHub.com.
