@@ -84,15 +84,16 @@ If the repository is public, you don't need permission to download the repositor
 
 Let's say you'd like make changes to the project.  We'll take the following steps:
 
--  **Fork** the GitHub repository
+-  **Fork** the master GitHub repository
 -  **Clone** the forked repository onto our local system
 -  Make a new **branch** of the project
 -  Edit the branch to make our changes
 -  Add and commit our changes
 -  Make a pull request to the master repository
+-  The owner then accepts the request and merges your changes into the master project
 
 
-### Forking a GitHub repository
+## Forking a GitHub repository
 
 Go to github.com and sign in.
 
@@ -280,7 +281,7 @@ I click "Merge pull request" (and I get a chance to add my own comment which wil
 
 After I've confirmed the merge, your changes will show up on the main project page (not just your fork).  Your changes are now part of the master branch!
 
-##  Updaing your local copy
+### Updaing your local copy
 
 You made changes and I merged them into the master project, but you don't have the most up to date version yet on your local machine.  So you should pull the changes from the server.  You can pull changes at any time, even if you don't intend to merge branches.
 
@@ -353,7 +354,7 @@ Binary files a/data/rawData/.DS_Store and b/data/rawData/.DS_Store differ
 
 This means that there were edits to **README.md**.  The line at the start of the file "# Collaboration tutorial# SeansGitHubTutorial-Collaboration", was deleted and several other lines were added.  Basically, the last edit just updated the README file to include a fuller description.
 
-## Merging branches in your local project
+### Merging branches in your local project
 
 In the example above, the collaborators made branches, then the project owner merged them.  But you can merge branches in your own local repository.  You can use `merge` in the same way as above:
 
